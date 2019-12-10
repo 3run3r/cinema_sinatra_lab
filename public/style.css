@@ -1,0 +1,13 @@
+body {
+  background-color: #D0A98F;
+  color: #4D243D;
+  font-family: Courier;
+}
+
+li {
+  list-style-type: none;
+}
+
+hr {
+  border: 1px solid #4D243D;
+}
