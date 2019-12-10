@@ -31,6 +31,11 @@ class Film
     return self.map_films(films)
   end
 
+  # def self.film_list()
+  #   array_of_films = self.all()
+  #   array_of_films.each {|film| film.title}
+  # end
+
   def update()
     sql = "UPDATE films SET title = $1, price = $2 WHERE id = $3;"
     values = [@title, @price, @id]
@@ -50,6 +55,18 @@ class Film
     values = [@id]
     customers = SqlRunner.run(sql, values)
     return Customer.map_customers(customers)
+  end
+
+  def self.film_title_by_id(id)
+    sql = "SELECT * FROM films WHERE id = $1;"
+    values = [id]
+    return film_title = SqlRunner.run(sql, values)[0]['title'].to_s
+  end
+
+  def self.film_price_by_id(id)
+    sql = "SELECT * FROM films WHERE id = $1;"
+    values = [id]
+    return film_price = SqlRunner.run(sql, values)[0]['price'].to_i
   end
 
   def total_customers()
